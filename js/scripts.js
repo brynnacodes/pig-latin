@@ -32,15 +32,4 @@ $(document).ready(function(){
     // alert("userOutput: " + userOutput);
     event.preventDefault();
   });
-
-
-
-
-
-
-
-
-
-
-
 });
