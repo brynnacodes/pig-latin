@@ -1,17 +1,24 @@
 ////////BE////////
-var userInput;
-var anslatortray =function(userInput){
-  if (userInput === "a") {
-    var result = userInput + "ay";
-  }  else {
-    result = userInput;
+var translator = function(userInput) {
+    userInput=userInput.toLowerCase(); //works
+
+    // spec deals with words that start with a vowel:
+    if (["a", "e", "i", "o", "u"].indexOf(userInput[0]) > -1) {
+        return userInput=userInput+"ay";
+    }
+    // spec deals with words that begin with one or more consonants
+   else {
+   //for loop checks for multiple consonants
+       for (var i = 0; i<userInput.length; i++){
+
+           if (["a", "e", "i", "o", "u"].indexOf(userInput[i]) > -1){
+               var firstcons = userInput.slice(0, i);
+               var middle = userInput.slice(i, userInput.length);
+               userInput = middle+firstcons+"ay";
+               break;}
+            }
+    return userInput}
   }
-  return result;
-}
-
-
-
-
 
 /////////UI/////////
 $(document).ready(function(){
@@ -20,7 +27,7 @@ $(document).ready(function(){
     // var userInput = prompt("userInput");
     var userInput = $("input#text-input").val();
     // alert("userInput: " + userInput);
-    var userOutput = anslatortray(userInput);
+    var userOutput = translator(userInput);
     $("p#text-output").text(userOutput);
     // alert("userOutput: " + userOutput);
     event.preventDefault();
