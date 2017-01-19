@@ -12,9 +12,9 @@ var translator = function(userInput) {
        for (var i = 0; i<userInput.length; i++){
 
            if (["a", "e", "i", "o", "u"].indexOf(userInput[i]) > -1){
-               var firstcons = userInput.slice(0, i);
-               var middle = userInput.slice(i, userInput.length);
-               userInput = middle+firstcons+"ay";
+               var firstConsonants = userInput.slice(0, i);
+               var middleWord = userInput.slice(i, userInput.length);
+               userInput = middleWord + firstConsonants + "ay";
                break;}
             }
     return userInput}
